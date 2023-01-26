@@ -1,5 +1,4 @@
 const express = require("express");
-const port = 3333;
 const qr = require("qr-image");
 const app = express();
 
@@ -31,6 +30,6 @@ app.get("/qrsvg", (req, res) => {
   qr_svg.pipe(res);
 });
 
-app.listen(port || "3001", () => {
-  console.log(`QR code server listening on port ${port}`);
+app.listen(`0.0.0.0:${process.env.PORT ?? 3000}`, () => {
+  console.log("server listening on port 3000!");
 });
