@@ -29,19 +29,6 @@ app.get("/qrsvg", (req, res) => {
   res.setHeader("Content-type", "image/svg+xml");
   qr_svg.pipe(res);
 });
-app.get("/qrjpg", (req, res) => {
-  const url = req.query.url;
-
-  if (!url) {
-    res.status(400).send({ error: "URL is required" });
-    return;
-  }
-
-  const qr_svg = qr.image(url, { type: "jpeg" });
-  res.setHeader("Content-disposition", "attachment; filename=qr.jpeg");
-  res.setHeader("Content-type", "image/jpeg");
-  qr_svg.pipe(res);
-});
 
 app.listen(3000, () => {
   console.log("QR code server listening on port 3000!");
