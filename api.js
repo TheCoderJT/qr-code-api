@@ -30,6 +30,6 @@ app.get("/qrsvg", (req, res) => {
   qr_svg.pipe(res);
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("QR code server listening on port 3000!");
 });
